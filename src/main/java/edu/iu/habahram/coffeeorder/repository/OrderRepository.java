@@ -9,6 +9,16 @@ import java.io.*;
 public class OrderRepository {
     private static final String DB_FILE = "db.txt";
     private static int lastId = loadLastId();
+
+    private static void saveToDatabase(Receipt receipt) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(DB_FILE, true))) {
+            writer.write(receipt.toString());
+            writer.newLine();
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to save receipt to database", e);
+        }
+    }
+
     public Receipt add(OrderData order) throws Exception {
         Beverage beverage = switch (order.beverage().toLowerCase()) {
             case "dark roast" -> new DarkRoast();
@@ -36,14 +46,7 @@ public class OrderRepository {
         return receipt;
 
     }
-    private static void saveToDatabase(Receipt receipt) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(DB_FILE, true))) {
-            writer.write(receipt.toString());
-            writer.newLine();
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to save receipt to database", e);
-        }
-    }
+
     private static int loadLastId() {
         int lastId = 0; 
 
