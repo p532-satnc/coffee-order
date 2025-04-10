@@ -1,0 +1,2 @@
+Receipt[id=1, description=Dark roast, Milk, Mocha, cost=2.69]
+Receipt[id=2, description=Decaf, Mocha, Mocha, cost=1.8799999]
