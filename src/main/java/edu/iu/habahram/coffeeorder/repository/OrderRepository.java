@@ -24,8 +24,8 @@ public class OrderRepository {
             beverage = switch (condiment.toLowerCase()) {
                 case "milk" -> new Milk(beverage);
                 case "mocha" -> new Mocha(beverage);
-                case "soy" -> new Mocha(beverage);
-                case "whip" -> new Mocha(beverage);
+                case "soy" -> new Soy(beverage);
+                case "whip" -> new Whip(beverage);
                 default -> throw new Exception("Condiment type '%s' is not valid".formatted(condiment));
             };
         }

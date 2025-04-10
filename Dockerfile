@@ -1,11 +1,11 @@
 # Use a base image with OpenJDK 17
-FROM openjdk:17-jdk-alpine
+FROM eclipse-temurin:17
 
 # Set the working directory
 WORKDIR /app
 
 # Copy the application JAR file
-COPY target/your-app.jar app.jar
+COPY target/coffee-order-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the application port
 EXPOSE 8080
